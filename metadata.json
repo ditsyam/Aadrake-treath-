@@ -1,0 +1,8 @@
+{
+  "name": "Aardvark",
+  "description": "Multi-stage security pipeline for repository threat modeling, commit vulnerability scanning, sandboxed exploit validation, and one-click patch remediation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
