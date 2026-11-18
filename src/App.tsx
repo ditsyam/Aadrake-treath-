@@ -267,6 +267,8 @@ export default function App() {
           {activeStage === 'overview' && (
             <PipelineOverview
               repo={activeRepo}
+              repositories={repositories}
+              onSelectRepo={handleSelectRepo}
               onSelectStage={setActiveStage}
               onInspectFinding={handleInspectFinding}
               onOpenScanComposer={handleOpenScanComposer}

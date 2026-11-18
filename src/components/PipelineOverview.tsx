@@ -14,9 +14,12 @@ import type {
   Severity,
   VulnerabilityFinding,
 } from '../types/aardvark';
+import { ThreatHeatmap } from './ThreatHeatmap';
 
 interface PipelineOverviewProps {
   repo: RepositoryProject;
+  repositories: RepositoryProject[];
+  onSelectRepo: (repoId: string) => void;
   onSelectStage: (stage: PipelineStage) => void;
   onInspectFinding: (findingId: string, targetStage: PipelineStage) => void;
   onOpenScanComposer: () => void;
@@ -38,6 +41,8 @@ const STATUS_TEXT: Record<FindingStatus, string> = {
 
 export const PipelineOverview: React.FC<PipelineOverviewProps> = ({
   repo,
+  repositories,
+  onSelectRepo,
   onSelectStage,
   onInspectFinding,
   onOpenScanComposer,
@@ -237,6 +242,13 @@ export const PipelineOverview: React.FC<PipelineOverviewProps> = ({
           <div className="mt-1 text-xs text-slate-500">Codex-generated &amp; verified</div>
         </div>
       </section>
+
+      {/* Cross-Repository Severity Threat Heatmap */}
+      <ThreatHeatmap
+        repositories={repositories}
+        activeRepoId={repo.id}
+        onSelectRepo={onSelectRepo}
+      />
 
       {/* Findings Table */}
       <section className="bg-white border border-slate-200 rounded-xl overflow-hidden">
